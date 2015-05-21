@@ -4,10 +4,10 @@
 
 <hr/>
 <%= form_for @list, url: {action: "add_item"}, method: "post" do |f| %>
-<div class="field">
-	</div>
+	<div class="field">
 		<label for="new-item">Add a List Item</label>
 		<input type="text" id="new-item" name="item"/>
+	</div>
 	<div class="actions">
 	<button type="submit">Add!</button>
 </div>
