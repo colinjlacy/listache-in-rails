@@ -19,22 +19,20 @@
 
 <hr/>
 
-<h3>Remove Items from this list</h3>
 <% if @list.list_items? %>
-	<% if @list.list_items? %>
-		<div class="list-group display-list">
-		  <% @list.list_items.each do |item| %>
-			  <div class="list-group-item">
-				<div class="lead">
-				  <%= item %>
-				  <div class="pull-right">
-					<%= link_to 'Remove', item, method: :delete, class: "btn btn-default text-danger" %>
-				  </div>
-				</div>
+	<h3>Remove Items from this list</h3>
+	<div class="list-group display-list">
+	  <% @list.list_items.each do |item| %>
+		  <div class="list-group-item">
+			<div class="lead">
+			  <%= item %>
+			  <div class="pull-right">
+				<%= link_to 'Remove', item, method: :delete, class: "btn btn-default text-danger" %>
 			  </div>
-		  <% end %>
-		</div>
-	<% end %>
-<% end %>
+			</div>
+		  </div>
+	  <% end %>
+	</div>
+\<% end %>
 
 
