@@ -8,6 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<<<<<<< HEAD
 <header class="app-header">
   <div class="container">
 	<div class="row">
@@ -21,10 +22,16 @@
 <main class="container">
   <div class="row">
 	<div class="col-sm-8 col-sm-push-2">
+	  <p class="notice"><%= notice %></p>
+	  <p class="alert"><%= alert %></p>
 	  <%= yield %>
 	</div>
   </div>
 </main>
+=======
+
+<%= yield %>
+>>>>>>> [authentication] adds devise gem, adds user model
 
 </body>
 </html>
