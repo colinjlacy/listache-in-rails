@@ -11,5 +11,25 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require bootstrap
+ *= require bootstrap-theme
  *= require_self
  */
+
+body {
+    background-color: #d5eed8;
+}
+.app-header {
+    background-color: #29773d;
+    padding: 5rem 0;
+    margin-bottom: 2rem;
+}
+.display-list .lead {
+    margin-bottom: 0;
+}
+.display-list .list-group-item {
+    padding: 20px;
+}
+h1, h2, h3 {
+    color: #434f46;
+}

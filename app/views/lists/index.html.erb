@@ -1,37 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listache</h1>
-
-<hr/>
-
 <h2>Create new list!</h2>
 
 <%= render 'form' %>
 
 <hr/>
 
-<table>
-  <thead>
-    <tr>
-	  <th>Title</th>
-	  <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @lists.each do |list| %>
-      <tr>
-		<td><%= list.title %></td>
-		<td>&nbsp;</td>
-		<td><%= link_to 'Show', list %></td>
-        <td><%= link_to 'Edit', edit_list_path(list) %></td>
-        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New List', new_list_path %>
+<% if @lists.any? %>
+	<div class="list-group display-list">
+	  <% @lists.each do |list| %>
+		  <div class="list-group-item">
+			<div class="lead"><%= list.title %>
+				<div class="pull-right">
+				  <%= link_to 'Show', list, class: "btn btn-sm btn-default" %>
+				  <%= link_to 'Edit', edit_list_path(list), class: "btn btn-sm btn-default" %>
+				  <%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default" %>
+				</div>
+			</div>
+		  </div>
+	  <% end %>
+	</div>
+<% end %>

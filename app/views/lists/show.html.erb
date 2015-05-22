@@ -2,13 +2,20 @@
 
 <h1><%= @list.title %></h1>
 
+<hr/>
+
 <% if @list.list_items? %>
-	<ul>
-		<% @list.list_items.each do |item| %>
-			<li><%= item %></li>
-		<% end %>
-	</ul>
+	<div class="list-group display-list">
+	  <% @list.list_items.each do |item| %>
+		  <div class="list-group-item">
+			<div class="lead">
+			  <%= item %>
+			</div>
+		  </div>
+	  <% end %>
+	</div>
 <% end %>
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+
+<%= link_to 'Edit', edit_list_path(@list), class: "btn btn-default" %>
+<%= link_to 'Back', lists_path, class: "btn btn-default" %>
