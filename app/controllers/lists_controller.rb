@@ -1,11 +1,13 @@
 class ListsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_list, only: [:show, :edit, :update, :destroy, :add_item, :delete_item]
+  before_action :confirm_owner, only: [:show, :edit, :update, :destroy, :add_item, :delete_item]
 
   # GET /lists
   # GET /lists.json
   def index
-	  @list = List.new
-	  @lists = List.all
+	  @list = List.new(user_id: current_user)
+	  @lists = List.where user_id: current_user.id
   end
 
   # GET /lists/1
@@ -26,7 +28,7 @@ class ListsController < ApplicationController
   # POST /lists.json
   def create
     @list = List.new(list_params)
-
+	@list.user_id = current_user.id
     respond_to do |format|
       if @list.save
         format.html { redirect_to @list, notice: 'List was successfully created.' }
@@ -101,5 +103,10 @@ class ListsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
       params[:list].permit(:title)
-    end
+	end
+
+  	# confirm the current user actually has access
+	def confirm_owner
+		redirect_to lists_url if current_user.id != @list.user_id
+	end
 end
