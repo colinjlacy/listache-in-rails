@@ -94,6 +94,9 @@ class ListsController < ApplicationController
 	  end
   end
 
+  def unauthorized
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
@@ -107,6 +110,6 @@ class ListsController < ApplicationController
 
   	# confirm the current user actually has access
 	def confirm_owner
-		redirect_to lists_url if current_user.id != @list.user_id
+		render :unauthorized if current_user.id != @list.user_id
 	end
 end
