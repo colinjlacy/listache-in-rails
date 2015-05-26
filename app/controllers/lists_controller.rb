@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_list, only: [:show, :edit, :update, :destroy, :add_item, :delete_item]
-  before_action :confirm_owner, only: [:show, :edit, :update, :destroy, :add_item, :delete_item]
+  before_action :set_list, only: [:show, :edit, :update, :destroy, :add_item, :delete_item, :send_form, :send_list]
+  before_action :confirm_owner, only: [:show, :edit, :update, :destroy, :add_item, :delete_item, :send_form, :send_list]
 
   # GET /lists
   # GET /lists.json
@@ -95,6 +95,15 @@ class ListsController < ApplicationController
   end
 
   def unauthorized
+  end
+
+  def send_form
+  end
+
+  def send_list
+	  to_email = params['to_email']
+	  message = params['message']
+	  ListMailer.send(@list, current_user.email, to_email, message)
   end
 
   private

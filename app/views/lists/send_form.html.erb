@@ -1,0 +1,13 @@
+<h1>Send this email to a friend!</h1>
+
+<%= form_for @list, url: {action: "send_list"}, method: "post" do |f| %>
+	<div class="form-group">
+	  <label class="control-label" for="to_email">Your friend's email:</label>
+	  <input class="form-control" type="text" name="to_email" id="to_email"/>
+	</div>
+	<div class="form-group">
+	  <label class="control-label" for="message">Would you like to add a message?</label>
+	  <textarea class="form-control" name="message" id="message" rows="10"></textarea>
+	</div>
+	<button type="submit" class="btn btn-primary">Send!</button>
+<% end %>
