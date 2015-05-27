@@ -1,4 +1,4 @@
-<h1>Send this email to a friend!</h1>
+<h1>Send this List to a friend!</h1>
 
 <%= form_for @list, url: {action: "send_list"}, method: "post" do |f| %>
 	<div class="form-group">
@@ -10,4 +10,5 @@
 	  <textarea class="form-control" name="message" id="message" rows="10"></textarea>
 	</div>
 	<button type="submit" class="btn btn-primary">Send!</button>
+	<%= link_to 'Cancel', @list, class: "btn btn-default" %>
 <% end %>
