@@ -103,7 +103,8 @@ class ListsController < ApplicationController
   def send_list
 	  to_email = params['to_email']
 	  message = params['message']
-	  ListMailer.send(@list, current_user.email, to_email, message)
+	  ListMailer.email_list(@list, current_user.email, to_email, message).deliver
+	  redirect_to @list, notice: "Your list has been sent!"
   end
 
   private
